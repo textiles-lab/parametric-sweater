@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+	<title>Open Sweater</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+<style>
+body {
+	background:#89c9e6;
+	margin:0;
+	padding:0;
+	text-align:center;
+}
+.grid {
+	background:#eee;
+	border-radius:4px;
+	padding:10px;
+	margin:10px auto;
+	display:grid;
+	grid-template-columns: max-content auto;
+	max-width:40em;
+	row-gap:2px;
+	column-gap:6px;
+}
+.grid label {
+	text-align:right;
+}
+.table{
+	text-align:center;
+}
+.error {
+	background:#f88;
+}
+</style>
+<body>
+	<h1>Open Sweater 2023: CMU RI Textiles Lab</h1>
+	<div class="grid">
+	<!--Measurement inputs-->
+	<label for="hem_circ">Hem Circumference</label><input id="hem_circ">
+	<label for="hem_circ_ease">Hem Circumference Ease</label><input id="hem_circ_ease">
+	<label for="hem_total">Total Hem Circumference</label><input id="hem_total" disabled>
+	<label for="hem_riblen">Hem Rib Length</label><input id="hem_riblen">
+	<label for="waist_circ">Waist Circumference</label><input id="waist_circ">
+	<label for="waist_circ_ease">Waist Circumference Ease</label><input id="waist_circ_ease">
+	<label for="waist_total">Total Waist Circumference</label><input id="waist_total" disabled>
+	<label for="hem_to_waist">Hem to Waist Length</label><input id="hem_to_waist">
+	<label for="hem_to_underbust">Hem to Underbust Length</label><input id="hem_to_underbust">
+	<label for="underbust_to_overbust">Underbust to Overbust Length</label><input id="underbust_to_overbust">
+	<label for="shoulder_underbust_front">Shoulder to Underbust Front Length</label><input id="shoulder_underbust_front">
+	<label for="shoulder_underbust_back">Shoulder to Underbust Back Length</label><input id="shoulder_underbust_back">
+	<label for="full_bust_circ">Full Bust Circumference</label><input id="full_bust_circ">
+	<label for="full_bust_ease">Full Bust Ease</label><input id="full_bust_ease">
+	<label for="full_bust_total">Total Full Bust Circumference</label><input id="full_bust_total" disabled>
+	<label for="waist_to_fb">Waist to Full Bust Length</label><input id="waist_to_fb">
+	<label for="upper_bust_circ">Upper Bust Circumference</label><input id="upper_bust_circ">
+	<label for="upper_bust_ease">Upper Bust Ease</label><input id="upper_bust_ease">
+	<label for="upper_bust_total">Total Upper Bust Circumference</label><input id="upper_bust_total" disabled>
+	<label for="fb_to_ub">Full Bust to Upper Bust Length</label><input id="fb_to_ub">
+	</div>
+	<div class="grid">
+		<label for="neck_depth">Neck Depth</label><input id="neck_depth">
+		<label for="neck_riblen">Neck Rib Length</label><input id="neck_riblen">
+		<label for="neck_circ">Neck Circumference</label><input id="neck_circ">
+		<label for="neck_ease">Neck Ease</label><input id="neck_ease">
+		<label for="neck_total">Total Neck Circumference</label><input id="neck_total" disabled>
+		<label for="neck_base">Base of Neckline Width</label><input id="neck_base">
+	</div>
+	<div class="grid">
+		<label for="armhole_depth">Armhole Depth</label><input id="armhole_depth">
+		<label for="underarm_to_neck">Underarm to Neck Length</label><input id="underarm_to_neck">
+	</div>
+	<div class="grid">
+	<label for="wrist_circ">Wrist Circumference</label><input id="wrist_circ">
+	<label for="wrist_ease">Wrist Ease</label><input id="wrist_ease">
+	<label for="wrist_total">Total Wrist Circumference</label><input id="wrist_total" disabled>
+	<label for="wrist_to_forearm">Wrist to Forearm Length</label><input id="wrist_to_forearm">
+	<label for="forearm_circ">Forearm Circumference</label><input id="forearm_circ">
+	<label for="forearm_ease">Forearm Ease</label><input id="forearm_ease">
+	<label for="forearm_total">Total Forearm Circumference</label><input id="forearm_total" disabled>
+	<label for="forearm_to_elbow">Forearm to Elbow Length</label><input id="forearm_to_elbow">
+	<label for="elbow_circ">Elbow Circumference</label><input id="elbow_circ">
+	<label for="elbow_ease">Elbow Ease</label><input id="elbow_ease">
+	<label for="elbow_total">Total Elbow Circumference</label><input id="elbow_total" disabled>
+	<label for="elbow_to_bicep">Elbow to Bicep Length</label><input id="elbow_to_bicep">
+	<label for="bicep_circ">Bicep Circumference</label><input id="bicep_circ">
+	<label for="bicep_ease">Bicep Ease</label><input id="bicep_ease">
+	<label for="bicep_total">Total Bicep Circumference</label><input id="bicep_total" disabled>
+	</div>
+	<div>
+		<label for="include_bust">Include Bust Shaping?</label><input id="include_bust" type="checkbox">
+		<label for="use_raglan">Use Raglan Sleeves?</label><input id="use_raglan" type="checkbox">
+	</div>
+	<div>
+		<input type="radio" id="jersey" name="stitch_type" value="jersey">
+		<label for="jersey">Jersey AKA Stockinette</label>
+		<input type="radio" id="garter" name="stitch_type" value="garter">
+		<label for="garter">Garter Stitch</label>
+		<input type="radio" id="seed" name="stitch_type" value="seed">
+		<label for="seed">Seed Stitch</label>
+	</div>
+	
+	<div>
+		<!--Button inputs-->
+		<input type="radio" id="half_scale" name="pattern_size" value="half_scale">
+		<label for="half_scale">Half Scale</label><br>
+		<input type="radio" id="full_scale" name="pattern_size" value="full_scale">
+		<label for="full_scale">Full Scale</label><br>
+		<button type="submit" id="file_save_button">Save File</button>
+	</div>
+	
+	
+</body>
+	<script>
+		"use strict";
+		//gets elements in script
+		let hem_circ = document.getElementById("hem_circ");
+		let hem_circ_ease = document.getElementById("hem_circ_ease");
+		let hem_total = document.getElementById("hem_total");
+		let hem_riblen = document.getElementById("hem_riblen");
+
+		let hem_to_underbust = document.getElementById("hem_to_underbust");
+		let underbust_to_overbust = document.getElementById("underbust_to_overbust");
+		let shoulder_underbust_front = document.getElementById("shoulder_underbust_front");
+		let shoulder_underbust_back = document.getElementById("shoulder_underbust_back");
+
+		let waist_circ = document.getElementById("waist_circ");
+		let waist_circ_ease = document.getElementById("waist_circ_ease");
+		let waist_total = document.getElementById("waist_total");
+		let hem_to_waist = document.getElementById("hem_to_waist");
+
+		let full_bust_circ = document.getElementById("full_bust_circ");
+		let full_bust_ease = document.getElementById("full_bust_ease");
+		let full_bust_total = document.getElementById("full_bust_total");
+		let waist_to_fb = document.getElementById("waist_to_fb");
+
+		let upper_bust_circ = document.getElementById("upper_bust_circ");
+		let upper_bust_ease = document.getElementById("upper_bust_ease");
+		let upper_bust_total = document.getElementById("upper_bust_total");
+		let fb_to_ub = document.getElementById("fb_to_ub");
+		
+		let wrist_circ = document.getElementById("wrist_circ");
+		let wrist_ease = document.getElementById("wrist_ease");
+		let wrist_total = document.getElementById("wrist_total");
+		let wrist_to_forearm = document.getElementById("wrist_to_forearm");
+
+		let forearm_circ = document.getElementById("forearm_circ");
+		let forearm_ease = document.getElementById("forearm_ease");
+		let forearm_total = document.getElementById("forearm_total");
+		let forearm_to_elbow = document.getElementById("forearm_to_elbow");
+
+		let elbow_circ = document.getElementById("elbow_circ");
+		let elbow_ease = document.getElementById("elbow_ease");
+		let elbow_total = document.getElementById("elbow_total");
+		let elbow_to_bicep = document.getElementById("elbow_to_bicep");
+
+		let bicep_circ = document.getElementById("bicep_circ");
+		let bicep_ease = document.getElementById("bicep_ease");
+		let bicep_total = document.getElementById("bicep_total");
+
+		let neck_depth = document.getElementById("neck_depth");
+		let neck_riblen = document.getElementById("neck_riblen");
+		let neck_circ = document.getElementById("neck_circ");
+		let neck_ease = document.getElementById("neck_ease");
+		let neck_total = document.getElementById("neck_total");
+		let neck_base = document.getElementById("neck_base");
+
+		let armhole_depth = document.getElementById("armhole_depth");
+		let underarm_to_neck = document.getElementById("underarm_to_neck");
+
+		let include_bust = document.getElementById("include_bust");
+		let use_raglan = document.getElementById("use_raglan");
+
+		let jersey_button = document.getElementById("jersey");
+		let garter_button = document.getElementById("garter");
+		let seed_button = document.getElementById("seed");
+		let stitch_type = document.getElementsByName("stitch_type");
+
+		let half_scale_button = document.getElementById("half_scale");
+		let full_scale_button = document.getElementById("full_scale");
+		let file_save_button = document.getElementById("file_save_button");
+
+		let arrayVars = [hem_circ,hem_circ_ease,hem_total,hem_riblen,
+						waist_circ,waist_circ_ease,waist_total,hem_to_waist,
+						hem_to_underbust,underbust_to_overbust,
+						shoulder_underbust_front,shoulder_underbust_back,
+						full_bust_circ,full_bust_ease,full_bust_total,waist_to_fb,
+						upper_bust_circ,upper_bust_ease,upper_bust_total,fb_to_ub,
+						wrist_circ,wrist_ease,wrist_total,wrist_to_forearm,
+						forearm_circ,forearm_ease,forearm_total,forearm_to_elbow,
+						elbow_circ,elbow_ease,elbow_total,elbow_to_bicep,
+						bicep_circ,bicep_ease,bicep_total,
+						neck_depth,neck_riblen,neck_circ,neck_ease,neck_total,neck_base,
+						armhole_depth,underarm_to_neck];
+		//let arrayButtons = [include_bust,use_raglan,jersey_button];
+		function update(){  //updates everything and removes errors
+			function parse(elt){
+				elt.classList.remove('error');
+				let num = Number(elt.value);
+				if (!isFinite(num)){
+					elt.classList.add('error');
+				}
+				return num;
+			}
+			//parses the elements, adds them if they are numbers
+			let hem_circ_val = parse(hem_circ);
+			let hem_circ_ease_val = parse(hem_circ_ease);
+			hem_total.value = hem_circ_val + hem_circ_ease_val;
+
+			let waist_circ_val = parse(waist_circ);
+			let waist_circ_ease_val = parse(waist_circ_ease);
+			waist_total.value = waist_circ_val + waist_circ_ease_val;
+
+			let full_bust_circ_val = parse(full_bust_circ);
+			let full_bust_ease_val = parse(full_bust_ease);
+			full_bust_total.value = full_bust_circ_val + full_bust_ease_val;
+
+			let upper_bust_circ_val = parse(upper_bust_circ);
+			let upper_bust_ease_val = parse(upper_bust_ease);
+			upper_bust_total.value = upper_bust_circ_val + upper_bust_ease_val;
+			
+			let wrist_circ_val = parse(wrist_circ);
+			let wrist_ease_val = parse(wrist_ease);
+			wrist_total.value = wrist_circ_val + wrist_ease_val;
+
+			let forearm_circ_val = parse(forearm_circ);
+			let forearm_ease_val = parse(forearm_ease);
+			forearm_total.value = forearm_circ_val + forearm_ease_val;
+
+			let elbow_circ_val = parse(elbow_circ);
+			let elbow_ease_val = parse(elbow_ease);
+			elbow_total.value = elbow_circ_val + elbow_ease_val;
+
+			let bicep_circ_val = parse(bicep_circ);
+			let bicep_ease_val = parse(bicep_ease);
+			bicep_total.value = bicep_circ_val + bicep_ease_val;
+
+			let neck_circ_val = parse(neck_circ);
+			let neck_ease_val = parse(neck_ease);
+			neck_total.value = neck_circ_val + neck_ease_val;
+		}
+		function inputs_to_JSON() {
+			let array_inputs = {};
+			//for each measurement, create an object with its name and value
+			for (const thisMeasurement of arrayVars){
+				let name = thisMeasurement.id;
+				console.log(thisMeasurement);
+				if (thisMeasurement.value == ""){
+					alert("You have not entered all your measurements");
+					return;
+				}
+				let value = Number(thisMeasurement.value);
+				if (half_scale_button.checked == true){
+					value*=.5;
+				}
+				array_inputs[name] = value;
+			//array_inputs[stitch_type] =
+				/*needs to add a section to the array inputs
+				so that we have fabric_type:jersey, include_bust:true,
+				use_raglan:false,main_body_carrier:1, etc
+				*/
+			}
+			return array_inputs;
+		}
+		function download_JSON(){ //not my code, based on w3
+			let content = JSON.stringify(inputs_to_JSON()); 
+			//content should point to the return from inputs_to_JSON, array_inputs
+			//get today's date and make it part of the filename string
+			let today = new Date();
+			let dd = today.getDate();
+			let mm = today.getMonth()+1;
+			let yyyy = today.getFullYear();
+			if (dd<10) dd= '0'+dd;
+			if (mm<10) mm ='0' + mm;
+			let date = mm + dd + yyyy;
+			let filename = 'measurements' + date;
+			if (!half_scale_button.checked && !full_scale_button.checked){
+				alert('select half scale or full scale');
+				return;
+			}
+			fileSave(content,`${filename}.json`);
+			return;//return something
+			//this should call fileSave on content, which is aliased to array_inputs
+		}
+		function fileSave(sourceText, fileIdentity) {//not my code
+			let workElement = document.createElement("a"); //used to be var
+			if ('download' in workElement) {
+			workElement.href = "data:" + 'text/plain' + "charset=utf-8," + escape(sourceText);
+			workElement.setAttribute("download", fileIdentity);
+			document.body.appendChild(workElement);
+			let eventMouse = document.createEvent("MouseEvents");//used to be var
+			eventMouse.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+			workElement.dispatchEvent(eventMouse);
+			document.body.removeChild(workElement);
+			} else throw 'File saving not supported for this browser';
+		}
+		hem_circ.addEventListener('input', update);
+		hem_circ_ease.addEventListener('input', update);
+		hem_total.addEventListener('input', update);
+		hem_riblen.addEventListener('input', update);
+		waist_circ.addEventListener('input', update);
+		waist_circ_ease.addEventListener('input', update);
+		waist_total.addEventListener('input', update);
+		hem_to_waist.addEventListener('input', update);
+
+		hem_to_underbust.addEventListener('input', update);
+		underbust_to_overbust.addEventListener('input', update);
+		shoulder_underbust_front.addEventListener('input', update);
+		shoulder_underbust_back.addEventListener('input', update);
+
+		full_bust_circ.addEventListener('input', update);
+		full_bust_ease.addEventListener('input', update);
+		full_bust_total.addEventListener('input', update);
+		waist_to_fb.addEventListener('input', update);
+		upper_bust_circ.addEventListener('input', update);
+		upper_bust_ease.addEventListener('input', update);
+		upper_bust_total.addEventListener('input', update);
+		fb_to_ub.addEventListener('input', update);
+
+		wrist_circ.addEventListener('input', update);
+		wrist_ease.addEventListener('input', update);
+		wrist_total.addEventListener('input', update);
+		wrist_to_forearm.addEventListener('input', update);
+		forearm_circ.addEventListener('input', update);
+		forearm_ease.addEventListener('input', update);
+		forearm_total.addEventListener('input', update);
+		forearm_to_elbow.addEventListener('input', update);
+		elbow_circ.addEventListener('input', update);
+		elbow_ease.addEventListener('input', update);
+		elbow_total.addEventListener('input', update);
+		elbow_to_bicep.addEventListener('input', update);
+		bicep_circ.addEventListener('input', update);
+		bicep_ease.addEventListener('input', update);
+		bicep_total.addEventListener('input', update);
+
+		neck_depth.addEventListener('input',update);
+		neck_riblen.addEventListener('input',update);
+		neck_circ.addEventListener('input',update);
+		neck_ease.addEventListener('input',update);
+		neck_total.addEventListener('input',update);
+		neck_base.addEventListener('input',update);
+		
+		half_scale_button.addEventListener('click',inputs_to_JSON);
+		full_scale_button.addEventListener('click',inputs_to_JSON);
+		file_save_button.addEventListener('click',download_JSON);
+
+	update();
+	</script>
+</head>
+</html>
+
