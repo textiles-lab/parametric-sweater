@@ -4,7 +4,7 @@
 
 The Parametric Complete-Garment Sweater Pattern was developed in 2023 by Pratyay Didwania and Teadora Gildengers, and was advised by James McCann. This pattern takes in a wide range of body measurements and design eases and generates machine knitting instructions for a sweater that requires minimal post-processing.  It is the first open-source parametric sweater pattern.
 
-This project was made with [knitout](https://textiles-lab.github.io/knitout/knitout.html), a file format that can represent low-level knitting machine instructions in a machine-independent way, which was developed by researchers at the Carnegie Mellon University Textiles Lab in 2017. 
+This project outputs [knitout](https://textiles-lab.github.io/knitout/knitout.html), a file format that can represent low-level knitting machine instructions in a machine-independent way, which was developed by researchers at the Carnegie Mellon University Textiles Lab in 2017. 
 
 ## How to use
 
@@ -21,4 +21,6 @@ To contact the authors directly, please send an email to pratyay@cmu.edu and jmc
 
 ## Acknowledgements
 
-We would like to thank Jenny Lin, Gabrielle Ohlson, Lea Albaugh and the rest of the Carnegie Mellon University Textiles Lab for their advice, guidance, and willingness to test and model our work.
+We thank Jenny Lin, Gabrielle Ohlson, Lea Albaugh and the rest of the Carnegie Mellon University Textiles Lab for their advice, guidance, and willingness to test and model our work.
+
+This material is based upon work partially supported by the National Science Foundation under an REU supplement to Grant No. 1955444. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
