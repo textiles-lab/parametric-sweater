@@ -55,9 +55,9 @@ export function execute_row(ks, side, row, width_change_stitches) {
             }
             else if (row == 'd') {
                 tube_left_decrease(ks, width_change_stitches);
-                one_tube_loop(ks);
+                one_tube_row(ks);
             } else {
-                one_tube_loop(ks);
+                one_tube_row(ks);
             }
             break;
 
@@ -66,17 +66,17 @@ export function execute_row(ks, side, row, width_change_stitches) {
                 tube_right_increase_row(ks, width_change_stitches);
             else if (row == 'd')
                 tube_right_decrease(ks, width_change_stitches);
-            one_tube_loop(ks);
+            one_tube_row(ks);
             break;
 
         case 'A':
             if (row == 'd') {
                 tube_all_decrease(ks, 4, 4, false);
-                one_tube_loop(ks);
+                one_tube_row(ks);
             } else if (row == 'i') {
                 tube_all_increase_row(ks, width_change_stitches)
             } else {
-                one_tube_loop(ks);
+                one_tube_row(ks);
             }
             break;
     }
@@ -230,7 +230,7 @@ export function knit_back(start, end, ks, force_jersey) {
 
  * ks.min, ks.max: the leftmost and rightmost needle numbers
  */
-export function one_tube_loop(ks, force_jersey) {
+export function one_tube_row(ks, force_jersey) {
     knit_front(ks.max, ks.min, ks, force_jersey);
     knit_back(ks.min, ks.max, ks, force_jersey);
     ks.row++;
@@ -244,7 +244,7 @@ export function one_tube_loop(ks, force_jersey) {
  */
 export function tube(length, ks) {
     for (let i = 0; i < length; i++) {
-        one_tube_loop(ks);
+        one_tube_row(ks);
     }
 }
 
@@ -383,7 +383,7 @@ export function zigzag_cast_on(ks) {
             console.log(`xfer f${i} b${i}`);
     }
     
-    one_tube_loop(ks, true);
+    one_tube_row(ks, true);
 }
 
 //does a cast on then rib in standard stitch settings
@@ -391,9 +391,9 @@ export function cast_on_and_rib(ks, rib_m, rib_n, riblen) {
     console.log(`x-stitch-number 102`); //22-10, tighter stitch size for casting on
     zigzag_cast_on(ks);
     console.log(`x-stitch-number 101`); //40-25, normal stitch size
-    one_tube_loop(ks, true);
+    one_tube_row(ks, true);
     rib_tube(rib_m, rib_n, riblen, ks);
-    one_tube_loop(ks, true);
+    one_tube_row(ks, true);
 }
 
 /* binds off the front bed of the tube
