@@ -232,7 +232,7 @@ body_ks.row += bodylen_offset;
 sh.cast_on_and_rib(body_ks, 1, 1, hem_riblen);
 
 //add a spacer loop after the complexity of the transfers in the rib
-sh.one_tube_loop(body_ks, true);
+sh.one_tube_row(body_ks, true);
 //build the body
 if (include_bust) {
 
@@ -265,7 +265,7 @@ if (include_bust) {
                 sh.knit_back(body_ks.min, body_ks.max, body_ks);
                 body_ks.row++;
             } else {
-                sh.one_tube_loop(body_ks);
+                sh.one_tube_row(body_ks);
             }
         }
     }
@@ -521,7 +521,7 @@ for (let i = 0; i < armhole_to_neckline; i++) {
             sh.knit_back(body_ks.min, body_ks.max, body_ks);
             body_ks.row++;
         } else {
-            sh.one_tube_loop(body_ks);
+            sh.one_tube_row(body_ks);
         }
     }
     prev_front_decreases = [];
@@ -545,7 +545,7 @@ for (let i = 0; i < armhole_to_neckline; i++) {
     r++;
 }
 
-sh.one_tube_loop(body_ks);
+sh.one_tube_row(body_ks);
 
 //----------------
 /* NECKLINE */
@@ -655,7 +655,7 @@ for (let i = 0; i < neck_depth/2; i++) {
 /* RIB FINISH + STRETCHY BINDOFF */
 //----------------
 
-sh.one_tube_loop(body_ks, true);
+sh.one_tube_row(body_ks, true);
 
 //change mode to garter on an odd row to add one row of purls before the rib (looks nice)
 if (body_ks.row % 2 == 0) {
@@ -663,11 +663,11 @@ if (body_ks.row % 2 == 0) {
 }
 body_ks.mode = 'g';
 
-sh.one_tube_loop(body_ks);
+sh.one_tube_row(body_ks);
 
 //1x1 neck rib
 sh.rib_tube(1, 1, neck_riblen, body_ks);
-sh.one_tube_loop(body_ks, true);
+sh.one_tube_row(body_ks, true);
 
 sh.bindoff_tube(body_ks);
 
